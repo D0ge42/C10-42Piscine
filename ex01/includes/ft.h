@@ -6,7 +6,7 @@
 /*   By: lorenzo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 16:39:24 by lorenzo           #+#    #+#             */
-/*   Updated: 2024/08/18 17:17:08 by lorenzo          ###   ########.fr       */
+/*   Updated: 2024/08/18 17:35:23 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_H
 
 # define BUFF 30000
-
 
 # include <fcntl.h>
 # include <unistd.h>
@@ -31,8 +30,6 @@ void	ft_putstr_buf(char *str, int size);
 int		ft_strlen(char *str);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_file_read(char *filepath);
-
 void	no_args(char **argv);
 
 #endif
-

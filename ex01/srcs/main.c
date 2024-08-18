@@ -6,7 +6,7 @@
 /*   By: lorenzo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 16:50:02 by lorenzo           #+#    #+#             */
-/*   Updated: 2024/08/18 17:12:26 by lorenzo          ###   ########.fr       */
+/*   Updated: 2024/08/18 17:36:26 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 				ft_putstr(": ", 2);
 				ft_putstr(av[i], 2);
 				ft_putstr(": ", 2);
-				ft_putstr(strerror(errno),2);
+				ft_putstr(strerror(errno), 2);
 				ft_putchar('\n', 2);
 			}
 		}
