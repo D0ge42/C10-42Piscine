@@ -6,7 +6,7 @@
 /*   By: lorenzo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 18:15:40 by lorenzo           #+#    #+#             */
-/*   Updated: 2024/08/17 19:28:05 by lorenzo          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:00:05 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,50 +15,60 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-void ft_putstr(char *str, int len)
+void	ft_putstr(char *str, int len, int out)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < len)
-		write(1, &str[i++], 1);
+		write(out, &str[i++], 1);
 }
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i = 0;
-	while(str[i])
+	int	i;
+
+	i = 0;
+	while (str[i])
 		i++;
-	return i;
+	return (i);
 }
 
-int main(int ac, char **av)
+void	readfile(char *str)
 {
-	int	fd;
-	int	sz;
+	int		fd;
+	int		sz;
 	char	buf[4097];
 
-	if(ac == 1)
-	{
-		ft_putstr("File name missing.\n", ft_strlen("File name missing.\n"));
-		return 1;
-	}
-	if(ac > 2)
-	{
-		ft_putstr("Too many arguments.\n", ft_strlen("Too many arguments.\n"));
-		return 1;
-	}
-	fd = open(av[1], O_RDONLY);
+	fd = open(str, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putstr("Cannot read file.\n", ft_strlen("Cannot read file.\n"));
-		return 1;
+		ft_putstr("Cannot read file.\n", ft_strlen("Cannot read file.\n"), 2);
+		return;
 	}
 	sz = read(fd, buf, 4096);
-	printf("starting size %i\n",sz);
 	while (sz > 0)
 	{
-		ft_putstr(buf, sz);
+		ft_putstr(buf, sz, 2);
 		sz = read(fd, buf, 4096);
-		printf("updated size %i\n",sz);
 	}
 	close(fd);
+}
+
+int	main(int ac, char **av)
+{
+	int	len;
+
+	len = ft_strlen("Too many arguments.\n");
+	if (ac == 1)
+	{
+		ft_putstr("File name missing.\n", ft_strlen("File name missing.\n"), 2);
+		return (1);
+	}
+	if (ac > 2)
+	{
+		ft_putstr("Too many arguments.\n", len, 2);
+		return (1);
+	}
+	readfile(av[1]);
 }
